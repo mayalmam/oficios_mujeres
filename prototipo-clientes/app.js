@@ -18,5 +18,5 @@ document.addEventListener('click',event=>{const link=event.target.closest('a[hre
 window.addEventListener('hashchange',()=>{const id=location.hash.slice(1);revealThrough(id);document.getElementById(id)?.scrollIntoView({behavior:'auto',block:'start'})});if(location.hash){revealThrough(location.hash.slice(1));requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView())}
 const carouselWords=['electricista','carpintera','fontanera','pintora','reformista','decoradora'];let carouselIndex=0,carouselTimer=null,carouselSwap=null;const wordNode=$('.box-word');
 function renderTrade(){carouselIndex=(carouselIndex+1)%carouselWords.length;clearTimeout(carouselSwap);wordNode.classList.add('changing');carouselSwap=setTimeout(()=>{wordNode.textContent=carouselWords[carouselIndex];wordNode.classList.remove('changing')},220)}
-function updateCarousel(){clearInterval(carouselTimer);if(!motionPreference.matches&&!document.hidden)carouselTimer=setInterval(renderTrade,3400)}
+function updateCarousel(){clearInterval(carouselTimer);if(!motionPreference.matches&&!document.hidden)carouselTimer=setInterval(renderTrade,2000)}
 document.addEventListener('visibilitychange',updateCarousel);motionPreference.addEventListener('change',updateCarousel);updateCarousel();
